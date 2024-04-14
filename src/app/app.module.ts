@@ -9,6 +9,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductsDetailsComponent } from './products-details/products-details.component';
 import localeFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
+import { CartComponent } from './cart/cart.component';
 registerLocaleData(localeFr)
 @NgModule({
   providers:[{
@@ -21,7 +22,8 @@ registerLocaleData(localeFr)
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: ProductListComponent },
-      { path: 'products/:productId', component:ProductsDetailsComponent}
+      { path: 'products/:productId', component:ProductsDetailsComponent},
+      { path: 'cart', component:CartComponent}
     ])
   ],
   declarations: [
@@ -30,6 +32,7 @@ registerLocaleData(localeFr)
     ProductListComponent,
     ProductAlertsComponent,
     ProductsDetailsComponent,
+    CartComponent,
   ],
   bootstrap: [
     AppComponent

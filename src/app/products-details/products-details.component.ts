@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product, products } from '../products';
+import { CartService } from '../cart.service';
+
+
 @Component({
   selector: 'app-products-details',
   templateUrl: './products-details.component.html',
@@ -9,7 +12,10 @@ import { Product, products } from '../products';
 export class ProductsDetailsComponent implements OnInit{
   product : Product | undefined;
 
-  constructor(private route : ActivatedRoute) {}
+  constructor(
+    private route : ActivatedRoute, 
+    private cartService : CartService,
+  ) {}
   ngOnInit() {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
@@ -22,4 +28,9 @@ export class ProductsDetailsComponent implements OnInit{
     this.product = products.find(product => product.id === productIdFromRoute)
   }
   
+  addToCart(product: Product){
+    this.cartService.addToCart(product);
+    window.alert('Your product has been added to the cart !')
+  }
+
 }
